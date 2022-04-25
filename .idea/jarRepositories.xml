@@ -2,9 +2,29 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="fsb_thirdparty" />
+      <option name="name" value="fsb_thirdparty" />
+      <option name="url" value="https://nexus.sigma.sbrf.ru/nexus/content/repositories/fsb_thirdparty" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus3_3" />
+      <option name="name" value="nexus3_3" />
+      <option name="url" value="https://base.sw.sbc.space/docker/repository/ripilot_maven/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="service" />
+      <option name="name" value="service" />
+      <option name="url" value="https://nexus.sigma.sbrf.ru/nexus/service/local/repositories" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus3_2" />
+      <option name="name" value="nexus3_2" />
+      <option name="url" value="https://base.sw.sbc.space/docker/repository/central-proxy/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -12,9 +32,19 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="nexus3_1" />
+      <option name="name" value="nexus3_1" />
+      <option name="url" value="https://base.sw.sbc.space/docker/repository/public/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="central" />
+      <option name="url" value="https://nexus.sigma.sbrf.ru/nexus/content/groups/public" />
     </remote-repository>
   </component>
 </project>

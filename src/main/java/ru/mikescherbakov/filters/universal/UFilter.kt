@@ -1,14 +1,8 @@
 package ru.mikescherbakov.filters.universal
 
 class UFilter {
-    fun <T> execute(it: T): Boolean {
-        return applyFilter(this.group, it)
-    }
-
-    private fun <T> applyFilter(group: FilterGroup, it: T): Boolean {
-        var result:Boolean = true
-
-        return result
+    fun execute(it: Any): Boolean {
+        return this.group.execute(it)
     }
 
     companion object {
@@ -38,7 +32,7 @@ fun UFilter.add(group: FilterGroup):UFilter {
     return this
 }
 
-fun <T>Iterable<T>.uFilter(filter:UFilter):Iterable<T> {
+fun <T:Any>Iterable<T>.uFilter(filter:UFilter):Iterable<T> {
     val result:MutableList<T> = mutableListOf()
     this.forEach {
         if(filter.execute(it))
