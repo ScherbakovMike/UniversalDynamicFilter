@@ -4,7 +4,7 @@ package ru.mikescherbakov.filters.universal
 class FilterItem(
     val field: String,
     val comparisonType: ComparisonType,
-    val value: Any
+    val value: Any?=null
 ) {
 
     inline fun <reified T> EQUALS(a: T, b: T) = a == b
