@@ -11,14 +11,10 @@ fun resolveFieldValue(field: String, item: Any): Any? {
     var fieldClass: Field? = null
     pathParts.forEachIndexed { i, elem ->
         val methods = curClass.methods
-        methodClass = methods
-            .filter { it.name.contains("." + elem) }
-            .firstOrNull()
+        methodClass = methods.firstOrNull { it.name == elem }
 
         val fields = curClass.declaredFields
-        fieldClass = fields
-            .filter { it.name.contains("." + elem) }
-            .firstOrNull()
+        fieldClass = fields.firstOrNull { it.name == elem }
 
         when {
             methodClass != null -> {

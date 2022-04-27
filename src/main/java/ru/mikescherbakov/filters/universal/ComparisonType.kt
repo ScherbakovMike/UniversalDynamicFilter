@@ -1,13 +1,14 @@
 package ru.mikescherbakov.filters.universal
+
 enum class ComparisonType {
     EQUALS,
-    NONEQUALS,
+    NOTEQUALS,
     LESS,
     LESSOREQUAL,
     GREATER,
     GREATEROREQUAL,
     FILLED,
-    NONFILLED,
+    NOTFILLED,
     INTHELIST,
     NOTINTHELIST
 }
