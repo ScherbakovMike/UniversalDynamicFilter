@@ -1,8 +1,14 @@
 package ru.mikescherbakov.filters.universal
 
 fun main() {
-    val list: List<TestKotlinClass> = listOf(TestKotlinClass(123, "abc"))
-    list.uFilter(
+    val list1: List<TestKotlinClass> = listOf(TestKotlinClass(123, "abc"))
+    list1.uFilter(
+        UFilter.andGroup()
+            .add(FilterItem("length", ComparisonType.EQUALS, 3))
+    )
+
+    val list2: List<TestJavaClass> = listOf(TestJavaClass(123, "abc"))
+    list2.uFilter(
         UFilter.andGroup()
             .add(FilterItem("length", ComparisonType.EQUALS, 3))
     )

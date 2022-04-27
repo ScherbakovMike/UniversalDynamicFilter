@@ -6,8 +6,7 @@ class FilterItem(
     val value: Any
 ) {
     fun execute(item: Any): Boolean {
-        val clazz = item::class
-        val members = clazz.members
+        val value = resolveFieldValue(field, item)
         return true
     }
 
