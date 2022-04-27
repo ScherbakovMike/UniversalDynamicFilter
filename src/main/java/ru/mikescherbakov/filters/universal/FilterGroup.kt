@@ -9,29 +9,29 @@ class FilterGroup(
     fun add(item: FilterItem) = filterItems.add(item)
     fun add(group: FilterGroup) = filterGroups.add(group)
 
-    fun execute(item:Any):Boolean {
-        val result:Boolean = this.groupType==GroupType.AND
+    fun execute(item: Any): Boolean {
+        val result: Boolean = this.groupType == GroupType.AND
 
         val itemsResults: MutableMap<FilterItem, Boolean> = mutableMapOf()
-        this.filterItems.forEach{
-            val itemResult:Boolean = it.execute(item)
+        this.filterItems.forEach {
+            val itemResult: Boolean = it.execute(item)
             itemsResults[it] = itemResult
-            if(!itemResult && this.groupType==GroupType.AND) {
+            if (!itemResult && this.groupType == GroupType.AND) {
                 return false
             }
-            if(itemResult && this.groupType==GroupType.OR) {
+            if (itemResult && this.groupType == GroupType.OR) {
                 return true
             }
         }
 
         val groupsResults: MutableMap<FilterGroup, Boolean> = mutableMapOf()
-        this.filterGroups.forEach{
-            val groupResult:Boolean = it.execute(item)
+        this.filterGroups.forEach {
+            val groupResult: Boolean = it.execute(item)
             groupsResults[it] = groupResult
-            if(!groupResult && this.groupType==GroupType.AND) {
+            if (!groupResult && this.groupType == GroupType.AND) {
                 return false
             }
-            if(groupResult && this.groupType==GroupType.OR) {
+            if (groupResult && this.groupType == GroupType.OR) {
                 return true
             }
         }

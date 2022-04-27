@@ -1,5 +1,5 @@
 package ru.mikescherbakov.filters.universal
 
-class MethodInvokeException(val source:Exception): Exception(source) {}
-class FieldGetException(val source:Exception): Exception(source)
-class PathResolveException(override val message:String): Exception(message)
+class MethodInvokeException(source: Exception, message:String) : Exception(message, source)
+class FieldGetException(source: Exception, message:String) : Exception(message, source)
+class PathResolveException(message: String) : Exception(message)

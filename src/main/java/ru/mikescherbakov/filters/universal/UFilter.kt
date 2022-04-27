@@ -6,13 +6,13 @@ class UFilter {
     }
 
     companion object {
-        fun andGroup():UFilter {
+        fun andGroup(): UFilter {
             return UFilter().apply {
                 group = FilterGroup(GroupType.AND)
             }
         }
 
-        fun orGroup():UFilter {
+        fun orGroup(): UFilter {
             return UFilter().apply {
                 group = FilterGroup(GroupType.OR)
             }
@@ -22,28 +22,21 @@ class UFilter {
     lateinit var group: FilterGroup
 }
 
-fun UFilter.add(item: FilterItem):UFilter {
+fun UFilter.add(item: FilterItem): UFilter {
     group.add(item)
     return this
 }
 
-fun UFilter.add(group: FilterGroup):UFilter {
+fun UFilter.add(group: FilterGroup): UFilter {
     group.add(group)
     return this
 }
 
-fun <T:Any>Iterable<T>.uFilter(filter:UFilter):Iterable<T> {
-    val result:MutableList<T> = mutableListOf()
+fun <T : Any> Iterable<T>.uFilter(filter: UFilter): Iterable<T> {
+    val result: MutableList<T> = mutableListOf()
     this.forEach {
-        if(filter.execute(it))
+        if (filter.execute(it))
             result.add(it)
     }
     return result
 }
-
-/*
-list.uFilter(
-UFilter.
-.add(FilterItem("elem.length", ComparisonType.EQUALS, 3))
-)
- */

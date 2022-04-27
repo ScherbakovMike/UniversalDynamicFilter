@@ -9,11 +9,14 @@ fun resolveFieldValue(field: String, item: Any): Any? {
     var curValue: Any? = item
     var methodClass: Method? = null
     var fieldClass: Field? = null
-    pathParts.forEachIndexed { i, elem_ ->
+    pathParts.forEachIndexed { _, elem_ ->
         var elem = elem_
         if (elem_.endsWith("()")) {
             elem = elem_.replace("()", "")
         }
+
+        if(elem == "it") return@forEachIndexed
+
         val declaredMethods = curClass.declaredMethods
         val methods = curClass.methods
         methodClass = declaredMethods.firstOrNull { it.name == elem }
@@ -28,16 +31,20 @@ fun resolveFieldValue(field: String, item: Any): Any? {
                 try {
                     curValue = methodClass!!.invoke(curValue)
                 } catch (e: Exception) {
-                    throw MethodInvokeException(e)
+                    throw MethodInvokeException(e, "Couldn't invoke the method ${methodClass!!.name} on value: $curValue ($curClass)")
                 }
             }
             fieldClass != null -> {
                 fieldClass!!.isAccessible = true
-                curValue = fieldClass!!.get(curValue)
+                try {
+                    curValue = fieldClass!!.get(curValue)
+                } catch (e: Exception) {
+                    throw FieldGetException(e, "Couldn't get the property ${fieldClass!!.name} of value: $curValue ($curClass)")
+                }
             }
             else ->
                 throw PathResolveException(
-                    "Method or Field with name $elem wasn't resolved."
+                    "Method or Field with name $elem_ wasn't resolved on value: $curValue ($curClass)"
                 )
         }
         curClass = curValue!!::class.java

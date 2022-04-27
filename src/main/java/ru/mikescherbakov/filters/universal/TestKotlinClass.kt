@@ -1,11 +1,11 @@
 package ru.mikescherbakov.filters.universal
 
 class TestKotlinClass(val a: Int, val b: String) {
-    private fun privateMethod():String{
+    private fun privateMethod(): String {
         return "private method print"
     }
 
-    fun nonPrivateMethod():String {
+    fun nonPrivateMethod(): String {
         return "non private method print"
     }
 }
