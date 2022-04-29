@@ -22,7 +22,7 @@ class UFilter {
     lateinit var group: FilterGroup
 }
 
-fun UFilter.add(item: FilterItem): UFilter {
+fun UFilter.add(item: FilterItem<*>): UFilter {
     group.add(item)
     return this
 }
