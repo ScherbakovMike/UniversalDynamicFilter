@@ -1,9 +1,7 @@
 package ru.mikescherbakov.filters.universal
 
 class UFilter {
-    fun execute(it: Any): Boolean {
-        return this.group.execute(it)
-    }
+    lateinit var group: FilterGroup
 
     companion object {
         fun andGroup(): UFilter {
@@ -19,24 +17,17 @@ class UFilter {
         }
     }
 
-    lateinit var group: FilterGroup
-}
-
-fun UFilter.add(item: FilterItem<*>): UFilter {
-    group.add(item)
-    return this
-}
-
-fun UFilter.add(group: FilterGroup): UFilter {
-    group.add(group)
-    return this
-}
-
-fun <T : Any> Iterable<T>.uFilter(filter: UFilter): Iterable<T> {
-    val result: MutableList<T> = mutableListOf()
-    this.forEach {
-        if (filter.execute(it))
-            result.add(it)
+    fun execute(it: Any): Boolean {
+        return this.group.execute(it)
     }
-    return result
+
+    fun add(item: FilterItem<*>): UFilter {
+        group.add(item)
+        return this
+    }
+
+    fun add(group: FilterGroup): UFilter {
+        group.add(group)
+        return this
+    }
 }
