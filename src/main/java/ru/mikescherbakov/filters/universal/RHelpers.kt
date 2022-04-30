@@ -3,6 +3,13 @@ package ru.mikescherbakov.filters.universal
 import java.lang.reflect.Field
 import java.lang.reflect.Method
 
+/**
+ * Calculate the value of field
+ * @param field - path to field, i.e. "it.name.length" or "it", or "it.size()"
+ * @param item - item of collection, on which the value of field must be calculated
+ *
+ * @return value of field on item element
+ */
 fun resolveFieldValue(field: String, item: Any?): Any? {
     if (item == null) return null
 

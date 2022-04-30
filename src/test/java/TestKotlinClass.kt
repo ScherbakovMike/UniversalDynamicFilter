@@ -4,7 +4,7 @@ class TestKotlinClass {
     var intField by Delegates.notNull<Int>()
     lateinit var stringField: String
     var booleanField by Delegates.notNull<Boolean>()
-    var listField:List<TestJavaClass?>? = null
+    var listField: List<TestJavaClass?>? = null
 
     private fun privateMethod(): String {
         return "private method print"

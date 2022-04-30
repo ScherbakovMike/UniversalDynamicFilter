@@ -4,17 +4,8 @@ class UFilter {
     lateinit var group: FilterGroup
 
     companion object {
-        fun andGroup(): UFilter {
-            return UFilter().apply {
-                group = FilterGroup(GroupType.AND)
-            }
-        }
-
-        fun orGroup(): UFilter {
-            return UFilter().apply {
-                group = FilterGroup(GroupType.OR)
-            }
-        }
+        fun andGroup() = FilterGroup(GroupType.AND)
+        fun orGroup() = FilterGroup(GroupType.OR)
     }
 
     fun execute(it: Any): Boolean {
@@ -25,9 +16,8 @@ class UFilter {
         group.add(item)
         return this
     }
-
     fun add(group: FilterGroup): UFilter {
-        group.add(group)
+        this.group = group
         return this
     }
 }
