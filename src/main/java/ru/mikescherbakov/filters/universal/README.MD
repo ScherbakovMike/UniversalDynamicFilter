@@ -18,7 +18,8 @@ Supports the custom specification of filtering fields.
 
 val sourceList: List<String> = listOf("First", "Second", "Super long string")  
 val filteredList = sourceList.uFilter(  
-UFilter()     .add(  
+UFilter()
+.add(
 andGroup()  
 .add(FilterItem.LessOrEqual("it.length", 10))  
 ).toList()  
